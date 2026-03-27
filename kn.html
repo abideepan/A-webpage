@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple React Webpage</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel (to use JSX) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function App() {
+      const [page, setPage] = React.useState("home");
+
+      return (
+        <div>
+          {/* Navbar */}
+          <nav style={{ padding: "10px", background: "#333" }}>
+            <button onClick={() => setPage("home")} style={btn}>Home</button>
+            <button onClick={() => setPage("about")} style={btn}>About</button>
+            <button onClick={() => setPage("contact")} style={btn}>Contact</button>
+          </nav>
+
+          {/* Pages */}
+          <div style={{ padding: "20px" }}>
+            {page === "home" && <h1>Welcome to my website</h1>}
+            {page === "about" && <h1>About us</h1>}
+            {page === "contact" && <h1>Contact Page</h1>}
+          </div>
+        </div>
+      );
+    }
+
+    const btn = {
+      color: "white",
+      background: "transparent",
+      border: "none",
+      marginRight: "10px",
+      cursor: "pointer",
+      fontSize: "16px"
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
